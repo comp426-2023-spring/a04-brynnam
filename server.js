@@ -29,22 +29,22 @@ app.get("/app/rpsls/", (req, res) => {
 })
 
 //play rps query endpoint
-app.get("/app/rps/play", (req, res) => {
+app.get("/app/rps/play/", (req, res) => {
     res.status(200).send(JSON.stringify(rps(req.query.shot)))
 })
 
 //play rpsls query endpoint
-app.get("/app/rpsls/play", (req, res) => {
+app.get("/app/rpsls/play/", (req, res) => {
     res.status(200).send(JSON.stringify(rpsls(req.query.shot)))
 })
 
 //JSON rps request endpoint
-app.post("/app/rps/play", (req, res) => {
+app.post("/app/rps/play/", (req, res) => {
     res.status(200).send(JSON.stringify(rps(req.body.shot)))
 })
 
 //JSON rpsls request endpoint
-app.post("/app/rpsls/play", (req, res) => {
+app.post("/app/rpsls/play/", (req, res) => {
     res.status(200).send(JSON.stringify(rpsls(req.body.shot)))
 })
 
