@@ -48,9 +48,16 @@ app.post("/app/rpsls/play", (req, res) => {
     res.status(200).send(JSON.stringify(rpsls(req.query.body)))
 })
 
-//url play rps request endpoint
+//url rps endpoint
+app.get("/app/rps/play/:shot", (req, res) => {
+    res.status(200).send(JSON.stringify(rps(req.params.shot)))
+})
 
-//url play ps request endpoint
+//url rpsls endpoint
+app.get("/app/rpsls/play/:shot", (req, res) => {
+    res.status(200).send(JSON.stringify(rpsls(req.params.shot)))
+})
+
 
 //default endpoint (404)
 app.get("*", (req, res) => {
