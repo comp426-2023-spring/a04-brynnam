@@ -3,7 +3,7 @@
 import minimist from 'minimist';
 import express from "express";
 
-import { playRps, playRpsls} from "./lib/rpsls.js";
+import { rps, rpsls} from "./lib/rpsls.js";
 
 const args = minimist(process.argv.slice(2));
 const app = express();
@@ -19,38 +19,38 @@ app.get("/app/", (req, res) => {
 
 //play points
 app.get("/app/rps/", (req, res) => {
-    res.status(200).send(JSON.stringify(playRps()));
+    res.status(200).send(JSON.stringify(rps()));
 })
 
 app.get("/app/rpsls/", (req, res) => {
-    res.status(200).send(JSON.stringify(playRpsls()));
+    res.status(200).send(JSON.stringify(rpsls()));
 })
 
 //requests
 app.get("/app/rps/play/", (req, res) => {
-    res.status(200).send(JSON.stringify(playRps(req.query.shot)));
+    res.status(200).send(JSON.stringify(rps(req.query.shot)));
 })
 
 app.get("/app/rpsls/play/", (req, res) => {
-    res.status(200).send(JSON.stringify(playRpsls(req.query.shot)));
+    res.status(200).send(JSON.stringify(rpsls(req.query.shot)));
 })
 
 //JSON
 app.post("/app/rps/play/", (req, res) => {
-    res.status(200).send(JSON.stringify(playRps(req.body.shot)));
+    res.status(200).send(JSON.stringify(rps(req.body.shot)));
 })
 
 app.post("/app/rpsls/play/", (req, res) => {
-    res.status(200).send(JSON.stringify(playRpsls(req.body.shot)));
+    res.status(200).send(JSON.stringify(rpsls(req.body.shot)));
 })
 
 //url
 app.get("/app/rps/play/:shot", (req, res) => {
-    res.status(200).send(JSON.stringify(playRps(req.params.shot)));
+    res.status(200).send(JSON.stringify(rps(req.params.shot)));
 })
 
 app.get("/app/rpsls/play/:shot", (req, res) => {
-    res.status(200).send(JSON.stringify(playRpsls(req.params.shot)));
+    res.status(200).send(JSON.stringify(rpsls(req.params.shot)));
 })
 
 app.get("*", (req, res) => {
