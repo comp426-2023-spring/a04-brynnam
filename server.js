@@ -27,3 +27,19 @@ app.get("/app/rps/", (req, res) => {
 app.get("/app/rpsls/", (req, res) => {
     res.status(200).send(JSON.stringify(rpsls()));
 })
+
+//play rps request endpoint
+
+//play rpsls request endpoint
+
+//JSON play rps request endpoint
+
+//JSON play rpsls request endpoint
+
+//url play rps request endpoint
+
+//url play ps request endpoint
+
+//default endpoint (404)
+
+//console port notification
