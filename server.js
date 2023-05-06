@@ -39,8 +39,14 @@ app.get("/app/rpsls/play", (req, res) => {
 })
 
 //JSON rps request endpoint
+app.post("/app/rps/play", (req, res) => {
+    res.status(200).send(JSON.stringify(rps(req.query.body)))
+})
 
-//JSON  rpsls request endpoint
+//JSON rpsls request endpoint
+app.post("/app/rpsls/play", (req, res) => {
+    res.status(200).send(JSON.stringify(rpsls(req.query.body)))
+})
 
 //url play rps request endpoint
 
