@@ -1,69 +1,62 @@
 #!/usr/bin/env node
 
-import { rps, rpsls } from "./lib/rpsls.js";
-
-import minimist from "minimist";
+import minimist from 'minimist';
 import express from "express";
 
-const app = express();
-const args = minimist(process.argv.slice(2));
-const port = args["port"] || 5000;
+import { playRps, playRpsls} from "./lib/rpsls.js";
 
-app.use(express.json);
+const args = minimist(process.argv.slice(2));
+const app = express();
+const port = args["port"] || 5000
+
+app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
-//check endpoint at /app/ that returns 200 OK
-app.get("/app/", (req, res) =>{
+
+app.get("/app/", (req, res) => {
     res.status(200).send('200 OK');
 })
 
-//rps endpoint
+//play points
 app.get("/app/rps/", (req, res) => {
-    res.status(200).send(JSON.stringify(rps()));
+    res.status(200).send(JSON.stringify(playRps()));
 })
 
-//rpsls endpoint
 app.get("/app/rpsls/", (req, res) => {
-    res.status(200).send(JSON.stringify(rpsls()));
+    res.status(200).send(JSON.stringify(playRpsls()));
 })
 
-//play rps query endpoint
+//requests
 app.get("/app/rps/play/", (req, res) => {
-    res.status(200).send(JSON.stringify(rps(req.query.shot)))
+    res.status(200).send(JSON.stringify(playRps(req.query.shot)));
 })
 
-//play rpsls query endpoint
 app.get("/app/rpsls/play/", (req, res) => {
-    res.status(200).send(JSON.stringify(rpsls(req.query.shot)))
+    res.status(200).send(JSON.stringify(playRpsls(req.query.shot)));
 })
 
-//JSON rps request endpoint
+//JSON
 app.post("/app/rps/play/", (req, res) => {
-    res.status(200).send(JSON.stringify(rps(req.body.shot)))
+    res.status(200).send(JSON.stringify(playRps(req.body.shot)));
 })
 
-//JSON rpsls request endpoint
 app.post("/app/rpsls/play/", (req, res) => {
-    res.status(200).send(JSON.stringify(rpsls(req.body.shot)))
+    res.status(200).send(JSON.stringify(playRpsls(req.body.shot)));
 })
 
-//url rps endpoint
+//url
 app.get("/app/rps/play/:shot", (req, res) => {
-    res.status(200).send(JSON.stringify(rps(req.params.shot)))
+    res.status(200).send(JSON.stringify(playRps(req.params.shot)));
 })
 
-//url rpsls endpoint
 app.get("/app/rpsls/play/:shot", (req, res) => {
-    res.status(200).send(JSON.stringify(rpsls(req.params.shot)))
+    res.status(200).send(JSON.stringify(playRpsls(req.params.shot)));
 })
 
-
-//default endpoint (404)
 app.get("*", (req, res) => {
-    res.status(404).send('404 NOT FOUND');
+    res.status(404).send("404 NOT FOUND");
 })
 
-//console port notification
-//app.listen(port, () => {
-   // console.log('Server listening on port ' + port);
-//})
+app.listen(port, () =>{
+    console.log('Server listening on port ' + port);
+})
