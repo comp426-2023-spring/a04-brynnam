@@ -18,7 +18,12 @@ app.get("/app/", (req, res) =>{
     res.status(200).send('200 OK');
 })
 
-//returns rps endpoint
+//rps endpoint
 app.get("/app/rps/", (req, res) => {
     res.status(200).send(JSON.stringify(rps()));
+})
+
+//rpsls endpoint
+app.get("/app/rps/", (req, res) => {
+    res.status(200).send(JSON.stringify(rpsls()));
 })
