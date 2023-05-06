@@ -41,5 +41,8 @@ app.get("/app/rpsls/", (req, res) => {
 //url play ps request endpoint
 
 //default endpoint (404)
+app.get("*", (req, res) => {
+    res.status(404).send('404 NOT FOUND');
+})
 
 //console port notification
