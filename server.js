@@ -28,13 +28,19 @@ app.get("/app/rpsls/", (req, res) => {
     res.status(200).send(JSON.stringify(rpsls()));
 })
 
-//play rps request endpoint
+//play rps query endpoint
+app.get("/app/rps/play", (req, res) => {
+    res.status(200).send(JSON.stringify(rps(req.query.shot)))
+})
 
-//play rpsls request endpoint
+//play rpsls query endpoint
+app.get("/app/rpsls/play", (req, res) => {
+    res.status(200).send(JSON.stringify(rpsls(req.query.shot)))
+})
 
-//JSON play rps request endpoint
+//JSON rps request endpoint
 
-//JSON play rpsls request endpoint
+//JSON  rpsls request endpoint
 
 //url play rps request endpoint
 
