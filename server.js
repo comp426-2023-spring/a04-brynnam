@@ -24,6 +24,6 @@ app.get("/app/rps/", (req, res) => {
 })
 
 //rpsls endpoint
-app.get("/app/rps/", (req, res) => {
+app.get("/app/rpsls/", (req, res) => {
     res.status(200).send(JSON.stringify(rpsls()));
 })
